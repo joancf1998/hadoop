@@ -44,7 +44,16 @@ public class WordCount {
       context.write(key, result);
     }
   }
-
+for(String words: split) {
+    if (!words.isEmpty()) { // Here!
+        firstChar = String.valueOf(words.charAt(0));
+        try {
+            ctx.write(new Text(firstChar), new IntWritable(1));
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+} 
   public static void main(String[] args) throws Exception {
     Configuration conf = new Configuration();
     Job job = Job.getInstance(conf, "word count");
