@@ -21,11 +21,10 @@ public class WordCount {
 
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException {
-      StringTokenizer itr = new StringTokenizer(value.toString());
-     
-     while (stPalabras.hasMoreTokens()) {
-  itr = stPalabras.nextToken();
-  System.out.println(sPalabra.substring(0,1));
+      StringTokenizer itr = new StringTokenizer(value.toString());itr
+     while (itr.hasMoreTokens()) {
+  itr = itr.nextToken();
+  System.out.println(itr.substring(0,1));
 
       }
     }
@@ -61,5 +60,3 @@ public class WordCount {
     System.exit(job.waitForCompletion(true) ? 0 : 1);
   }
 }
-
-
