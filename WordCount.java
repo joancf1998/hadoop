@@ -10,8 +10,10 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import java.util.regex.Pattern;
 
 public class WordCount {
+
 
   public static class TokenizerMapper
        extends Mapper<Object, Text, Text, IntWritable>{
@@ -23,7 +25,15 @@ public class WordCount {
       StringTokenizer itr = new StringTokenizer(value.toString());
      while (itr.hasMoreTokens()) {
   String itr2 = itr.nextToken();  // cream itr2 que li passam per string on només ens agafi la primera lletra de cada paraula
-  word.set(itr2.substring(0,1));  // aqui ja cream el contador en el itr2
+  //fer la paraula a minuscules
+  itr2 = itr2.substring(0,1);
+  itr2 = itr2.toLowerCase();
+  if ( Pattern.matches("[a-z]", itr2)) {// amb una expresió regular le deim que nomes si es lletra de la a a la z
+    word.set(itr2.toString());  // aqui ja cream el contador en el itr2
+  }else{
+    continue; // si no compleix la condició li diguem que boti a la seguent iteració
+  }
+
   context.write(word, one);    // llistam el contador
 
 
