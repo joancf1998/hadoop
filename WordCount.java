@@ -22,9 +22,9 @@ public class WordCount {
     public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
       StringTokenizer itr = new StringTokenizer(value.toString());
      while (itr.hasMoreTokens()) {
-  String itr2 = itr.nextToken();
-  word.set(itr2.substring(0,1));
-  context.write(word, one);
+  String itr2 = itr.nextToken();  // cream itr2 que li passam per string on només ens agafi la primera lletra de cada paraula
+  word.set(itr2.substring(0,1));  // aqui ja cream el contador en el itr2
+  context.write(word, one);    // llistam el contador
 
 
       }
