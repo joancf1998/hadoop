@@ -13,4 +13,4 @@ comp3 = foreach avg_rate generate group, ((AVG>0)? 1 : 0) as avg_positiu:int, AV
 comp4 = foreach avg_rate generate group, ((group.label==0)? 1 : 0) as no_label:int, AVG;
 /* dump comp4; */
 
-STORE avg_rate_group_max_min INTO '/user/cloudera/pig_analisis_opinions/resultat_analisis_opinions_max_min' USING org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'YES_MULTILINE');
+STORE avg_rate_group_max_min INTO '/user/cloudera/pig_analisis_opinions/resultat_analisis_opinions_max_min2' USING org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'YES_MULTILINE');
