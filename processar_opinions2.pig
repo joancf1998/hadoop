@@ -21,4 +21,4 @@ all_c = GROUP compt5 by c,
 count_all_neg = FOREACH all_c
 GENERATE FLATTEN(group) as (all_c), COUNT($1);
 
-STORE compt5 INTO '/user/cloudera/pig_analisis_opinions/aa' USING org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'YES_MULTILINE')
+STORE compt5 INTO '/user/cloudera/pig_analisis_opinions/bb' USING org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'YES_MULTILINE')
